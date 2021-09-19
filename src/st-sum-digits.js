@@ -13,7 +13,11 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getSumOfDigits(n) {
-  if (n < 10)
-            return n;
-        return n % 10 + getSumOfDigits(Math.floor(n / 10));
+  const sum = n.toString().split('').reduce((acc, item) => acc += Number(item), 0)
+
+  if (sum > 9) {
+    return getSumOfDigits(sum)
+  } else {
+    return sum
+  }
 }
