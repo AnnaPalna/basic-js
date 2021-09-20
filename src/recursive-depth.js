@@ -14,6 +14,13 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default class DepthCalculator {
   calculateDepth(arr) {
-    // remove line with error and write your code here
+    let depth = 1
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        depth += this.calculateDepth(arr.flat())
+        break
+      }
+    }
+    return depth
   }
 }
